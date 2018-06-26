@@ -1,0 +1,163 @@
+type Asset {
+  sys: AssetSys!
+  title: String
+  description: String
+  url: String
+}
+
+type AssetSys implements Sys {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Category implements Entry {
+  sys: EntrySys!
+  _backrefs: CategoryBackrefs
+  title: String
+  slug: String
+}
+
+type CategoryBackrefs {
+  courses__via__categories: [Course]
+}
+
+type CollectionMeta {
+  count: Int
+}
+
+type Course implements Entry {
+  sys: EntrySys!
+  _backrefs: CourseBackrefs
+  title: String
+  slug: String
+  image: Asset
+  shortDescription: String
+  description: String
+  duration: Int
+  skillLevel: String
+  lessons: [Lesson]
+  categories: [Category]
+}
+
+type CourseBackrefs {
+  layoutHighlightedCourses__via__course: [LayoutHighlightedCourse]
+}
+
+interface Entry {
+  sys: EntrySys!
+}
+
+type EntrySys implements Sys {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+  contentTypeId: ID!
+}
+
+type Layout implements Entry {
+  sys: EntrySys!
+  title: String
+  slug: String
+  contentModules: [Entry]
+}
+
+type LayoutCopy implements Entry {
+  sys: EntrySys!
+  title: String
+  headline: String
+  copy: String
+  ctaTitle: String
+  ctaLink: String
+  visualStyle: String
+}
+
+type LayoutHeroImage implements Entry {
+  sys: EntrySys!
+  title: String
+  headline: String
+  backgroundImage: Asset
+}
+
+type LayoutHighlightedCourse implements Entry {
+  sys: EntrySys!
+  title: String
+  course: Course
+}
+
+type Lesson implements Entry {
+  sys: EntrySys!
+  _backrefs: LessonBackrefs
+  title: String
+  slug: String
+  modules: [Entry]
+}
+
+type LessonBackrefs {
+  courses__via__lessons: [Course]
+}
+
+type LessonCodeSnippets implements Entry {
+  sys: EntrySys!
+  title: String
+  curl: String
+  dotNet: String
+  javascript: String
+  java: String
+  javaAndroid: String
+  php: String
+  python: String
+  ruby: String
+  swift: String
+}
+
+type LessonCopy implements Entry {
+  sys: EntrySys!
+  title: String
+  copy: String
+}
+
+type LessonImage implements Entry {
+  sys: EntrySys!
+  title: String
+  image: Asset
+  caption: String
+}
+
+type Query {
+  category(id: ID!): Category
+  categories(q: String, skip: Int, limit: Int): [Category]
+  _categoriesMeta(q: String): CollectionMeta
+  lessonImage(id: ID!): LessonImage
+  lessonImages(q: String, skip: Int, limit: Int): [LessonImage]
+  _lessonImagesMeta(q: String): CollectionMeta
+  layoutHighlightedCourse(id: ID!): LayoutHighlightedCourse
+  layoutHighlightedCourses(q: String, skip: Int, limit: Int): [LayoutHighlightedCourse]
+  _layoutHighlightedCoursesMeta(q: String): CollectionMeta
+  layout(id: ID!): Layout
+  layouts(q: String, skip: Int, limit: Int): [Layout]
+  _layoutsMeta(q: String): CollectionMeta
+  lessonCopy(id: ID!): LessonCopy
+  lessonCopies(q: String, skip: Int, limit: Int): [LessonCopy]
+  _lessonCopiesMeta(q: String): CollectionMeta
+  layoutCopy(id: ID!): LayoutCopy
+  layoutCopies(q: String, skip: Int, limit: Int): [LayoutCopy]
+  _layoutCopiesMeta(q: String): CollectionMeta
+  lesson(id: ID!): Lesson
+  lessons(q: String, skip: Int, limit: Int): [Lesson]
+  _lessonsMeta(q: String): CollectionMeta
+  lessonCodeSnippets(q: String, skip: Int, limit: Int): [LessonCodeSnippets]
+  _lessonCodeSnippetsMeta(q: String): CollectionMeta
+  layoutHeroImage(id: ID!): LayoutHeroImage
+  layoutHeroImages(q: String, skip: Int, limit: Int): [LayoutHeroImage]
+  _layoutHeroImagesMeta(q: String): CollectionMeta
+  course(id: ID!): Course
+  courses(q: String, skip: Int, limit: Int): [Course]
+  _coursesMeta(q: String): CollectionMeta
+}
+
+interface Sys {
+  id: ID!
+  createdAt: String!
+  updatedAt: String!
+}

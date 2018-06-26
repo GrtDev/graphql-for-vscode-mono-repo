@@ -1,0 +1,15 @@
+{
+  // Currently this config is required at the root for autocompletion to work
+  schema: {
+    files: 'packages/test/graphql/schema.gql',
+  },
+  query: {
+    files: [
+      // query gql files
+      {
+        match: 'packages/test/src/**/*.gql',
+        parser: 'QueryParser',
+      },
+    ]
+  }
+}

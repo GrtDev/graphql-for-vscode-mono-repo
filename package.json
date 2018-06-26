@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "description": "Monorepo",
+  "repository": "git@github.com:GrtDev/graphql-for-vscode-mono-repo.git",
+  "author": "GrtDev <hello@grtdev.com> (https://github.com/GrtDev)",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=9.3.0",
+    "yarn": ">=1.3.2"
+  },
+  "dependencies": {
+    "typescript": "2.9.2"
+  }
+}

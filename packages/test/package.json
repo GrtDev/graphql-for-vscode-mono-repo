@@ -1,0 +1,17 @@
+{
+  "name": "@test/test",
+  "version": "0.1.0",
+  "description": "test",
+  "repository": "git@github.com:GrtDev/graphql-for-vscode-mono-repo.git",
+  "author": "GrtDev <hello@grtdev.com> (https://github.com/GrtDev)",
+  "private": true,
+  "dependencies": {
+    "graphql": "0.13.2",
+    "react": "^16.4.1",
+    "typescript": "2.9.2"
+  },
+  "devDependencies": {
+    "@playlyfe/gql": "^2.6.0",
+    "@types/react": "^16.4.2"
+  }
+}
